@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const desc = e.target.value;
           textarea.value = desc;
         });
-        textarea.setAttribute("readonly", "readonly");
+        textarea.setAttribute("disabled", "true");
         checkIcon.style.pointerEvents = "none";
         saveToLocalStorage();
         alert("Description has been added.");
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const textarea = document.createElement("textarea");
       textarea.value = data.description;
-      textarea.setAttribute("readonly", "readonly");
+      textarea.setAttribute("disabled", "true");
       div.appendChild(textarea);
 
       const iconsDiv = document.createElement("div");
