@@ -157,12 +157,12 @@ body {
   gap: 10px;
 }
 
-.file-name .icons .check,
+.file-name .icons .des-added,
 .file-name .icons .delete {
   cursor: pointer;
 }
 
-.file-name .icons .check:hover {
+.file-name .icons .des-added:hover {
   color: green;
 }
 
@@ -176,7 +176,7 @@ h1 {
   color: orangered;
 }
 
-.file-name .icons .check img {
+.file-name .icons .des-added img {
   height: 30px;
 }
 

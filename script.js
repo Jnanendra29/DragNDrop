@@ -36,7 +36,12 @@ document.addEventListener("DOMContentLoaded", function () {
   function handleFiles(event) {
     const files = event.target.files;
     console.log(files);
-    const currentImages = fileList.getElementsByClassName("file-name").length;
+    let currentImages = null;
+    if (fileList.getElementsByClassName("file-name").length == 0) {
+      currentImages = 0;
+    } else {
+      currentImages = fileList.getElementsByClassName("file-name").length;
+    }
     if (currentImages + files.length > MAX_IMAGES) {
       alert(`You can only upload up to ${MAX_IMAGES} images.`);
       return;
@@ -44,11 +49,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     Array.from(files).forEach((file) => {
       if (!file.type.startsWith("image/")) {
-        alert("Only image files are allowed!");
+        alert("File " + file.name + " is not an image file.");
         return;
       }
       if (file.size > 1024 * 1024) {
-        alert("Images must be below 1 MB in size!");
+        alert("File " + file.name + " is larger than 1MB.");
         return;
       }
       displayFile(file);
@@ -69,14 +74,14 @@ document.addEventListener("DOMContentLoaded", function () {
       div.appendChild(img);
 
       const textarea = document.createElement("textarea");
-      textarea.placeholder = "Description";
+      textarea.placeholder = "Add a description...";
       div.appendChild(textarea);
 
       const iconsDiv = document.createElement("div");
       iconsDiv.className = "icons";
 
       const checkIcon = document.createElement("span");
-      checkIcon.className = "check";
+      checkIcon.className = "des-added";
       checkIcon.innerHTML = '<img src="./assets/checked.png">'; // Check icon
       checkIcon.addEventListener("click", () => {
         if (textarea.value == "") {
@@ -150,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
       iconsDiv.className = "icons";
 
       const checkIcon = document.createElement("span");
-      checkIcon.className = "check";
+      checkIcon.className = "des-added";
       checkIcon.innerHTML = '<img src="./assets/checked.png">'; // Check icon
       checkIcon.style.pointerEvents = "none"; // Disable click
 
